@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://api.ipx.club/'
+  baseUrl: 'https://api.ipx.club/',
+  stageUrl: 'https://api-gw.ipx.club/stage'
 };
 
 /*

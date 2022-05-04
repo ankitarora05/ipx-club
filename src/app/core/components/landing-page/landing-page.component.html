@@ -1,0 +1,327 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<style>
+    :host {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        font-size: 14px;
+        color: #333;
+        background: #000000;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 8px 0;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    body {
+        background: black;
+    }
+</style>
+
+<div class="ipx-landing">
+    <!--Header Section Start-->
+    <div class="ipx-header-bar">
+        <div class="ipx-logo">ip<span>x</span></div>
+        <div class="ipx-header">
+            <div class="ipx-header-action" (click)="scroll('category')">Categories</div>
+            <div class="ipx-header-action hide-in-mobile" (click)="scroll('howItWorks')">How it works</div>
+            <div class="ipx-header-action hide-in-desktop" (click)="scroll('howItWorksMobile')">How it works</div>
+            <div class="ipx-header-action" (click)="scroll('getEarlyAccess')">Get early access</div>
+            <div class="ipx-header-action">
+                <div class="login-button">
+                    <span [routerLink]="['login']">Login</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Header Section End-->
+
+    <!--Main Section Start-->
+    <div class="ipx-main-content">
+        <div class="ipx-main-landing-images">
+            <div class="ipx-main-landing-image-item shine-item"><img src="assets/images/landing-shine.png" /></div>
+            <div class="ipx-main-landing-image-item reel-item"><img src="assets/images/landing-reel.png" /></div>
+            <div class="ipx-main-landing-image-item money-item"><img src="assets/images/landing-money.png" /></div>
+            <div class="ipx-main-landing-image-item fire-item"><img src="assets/images/landing-fire.png" /></div>
+        </div>
+        <div class="ipx-main-landing-heading">A new era of entertainment, with you in charge</div>
+        <div class="ipx-main-landing-sub-heading">IPX lets you invest in upcoming films, music, books and more. Support
+            creators you believe in and acquire a new personal asset. Entertainment has never been so rewarding. Join the
+            future
+        </div>
+    </div>
+
+    <div class="ipx-main-landing-divider center"><img src="assets/images/line-landing-head.png" /></div>
+    <!--Main Section End-->
+
+
+    <!--NFT Section Start-->
+
+    <div class="ipx-main-landing-nft-section">
+        <div class="ipx-main-landing-nft-header">
+            <div class="ipx-main-landing-nft-title">TRENDING NFTs</div>
+            <div class="ipx-main-landing-nft-buttons">
+                <div class="ipx-main-landing-nft-button"><img src="assets/images/Arrow-left.png" /></div>
+                <div class="ipx-main-landing-nft-button"><img src="assets/images/Arrow-right.png" /></div>
+            </div>
+        </div>
+        <div class="ipx-main-landing-nft-slide-wrapper">
+            <div class="ipx-main-landing-nft-slide-container">
+                <div class="ipx-main-landing-nft-slide-list">
+                    <div class="ipx-main-landing-nft-slide-item">
+                        <img src="assets/images/nft1.png"  class="img-item"/>
+                        <div class="ipx-main-landing-nft-slide-action">
+                            <div class="ipx-main-landing-nft-wrapper">
+                                <div class="ipx-main-landing-nft-slide-action-left">
+                                    <div class="ipx-main-landing-nft-slide-action-image"><img src="assets/images/unsplash_FjvXUeYf1AA.png" /></div>
+                                    <div class="ipx-main-landing-nft-slide-action-text">
+                                        <div class="ipx-main-landing-nft-slide-action-text-header">Lambiyan</div>
+                                        <div class="ipx-main-landing-nft-slide-action-sub-text">Owned by – Pallav Bajjuri</div>
+                                    </div>
+                                </div>
+                                <div class="ipx-main-landing-nft-slide-action-right">
+                                    <div class="ipx-main-explore-action"><span>Explore</span> <img src="assets/images/arrow-right-nft.png" /></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ipx-main-landing-nft-slide-item">
+                        <img src="assets/images/nft2.png" class="img-item"/>
+                        <div class="ipx-main-landing-nft-slide-action">
+                            <div class="ipx-main-landing-nft-wrapper">
+                                <div class="ipx-main-landing-nft-slide-action-left">
+                                    <div class="ipx-main-landing-nft-slide-action-image"><img src="assets/images/unsplash_FjvXUeYf1AA.png" /></div>
+                                    <div class="ipx-main-landing-nft-slide-action-text">
+                                        <div class="ipx-main-landing-nft-slide-action-text-header">Lambiyan</div>
+                                        <div class="ipx-main-landing-nft-slide-action-sub-text">Owned by – Pallav Bajjuri</div>
+                                    </div>
+                                </div>
+                                <div class="ipx-main-landing-nft-slide-action-right">
+                                    <div class="ipx-main-explore-action"><span>Explore</span> <img src="assets/images/arrow-right-nft.png" /></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ipx-main-landing-nft-slide-item">
+                        <img src="assets/images/nft3.png"  class="img-item"/>
+                        <div class="ipx-main-landing-nft-slide-action">
+                            <div class="ipx-main-landing-nft-wrapper">
+                                <div class="ipx-main-landing-nft-slide-action-left">
+                                    <div class="ipx-main-landing-nft-slide-action-image"><img src="assets/images/unsplash_FjvXUeYf1AA.png" /></div>
+                                    <div class="ipx-main-landing-nft-slide-action-text">
+                                        <div class="ipx-main-landing-nft-slide-action-text-header">Lambiyan</div>
+                                        <div class="ipx-main-landing-nft-slide-action-sub-text">Owned by – Pallav Bajjuri</div>
+                                    </div>
+                                </div>
+                                <div class="ipx-main-landing-nft-slide-action-right">
+                                    <div class="ipx-main-explore-action"><span>Explore</span> <img src="assets/images/arrow-right-nft.png" /></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ipx-main-landing-nft-slide-item">
+                        <img src="assets/images/nft4.png"  class="img-item"/>
+                        <div class="ipx-main-landing-nft-slide-action">
+                            <div class="ipx-main-landing-nft-wrapper">
+                                <div class="ipx-main-landing-nft-slide-action-left">
+                                    <div class="ipx-main-landing-nft-slide-action-image"><img src="assets/images/unsplash_FjvXUeYf1AA.png" /></div>
+                                    <div class="ipx-main-landing-nft-slide-action-text">
+                                        <div class="ipx-main-landing-nft-slide-action-text-header">Lambiyan</div>
+                                        <div class="ipx-main-landing-nft-slide-action-sub-text">Owned by – Pallav Bajjuri</div>
+                                    </div>
+                                </div>
+                                <div class="ipx-main-landing-nft-slide-action-right">
+                                    <div class="ipx-main-explore-action"><span>Explore</span> <img src="assets/images/arrow-right-nft.png" /></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <img src="assets/images/nft-shadow.png" class="ipx-nft-list-shadow"/>
+        </div>
+    </div>
+    <!--NFT Section End-->
+
+
+    <!--Category Section Start-->
+
+    <div class="ipx-main-landing-categories" id="category">
+        <div class="ipx-main-landing-categories-heading">Categories</div>
+        <div class="ipx-main-landing-categories-sub-heading">IPX empowers creators to produce awesome entertainment across
+            genres, languages, categories and platforms.
+        </div>
+        <div class="ipx-main-landing-categories-types-wrapper">
+            <div class="ipx-main-landing-categories-type">
+                <div class="ipx-main-landing-categories-type-content">
+                    <div class="ipx-main-landing-categories-type-heading">Books</div>
+                    <div class="ipx-main-landing-categories-type-sub-heading">Initially, exclusively released on Kahaniya...</div>
+                    <div class="ipx-main-landing-categories-type-action-wrapper">
+                        <div class="ipx-main-landing-categories-type-action-image"><img src="assets/images/cat-book.png" /></div>
+                        <div class="ipx-main-landing-categories-type-action-arrow"><img src="assets/images/cat-arrow.png" /></div>
+                    </div>
+                </div>
+            </div>
+            <div class="ipx-main-landing-categories-type cust-background-active">
+                <div class="ipx-main-landing-categories-type-content">
+                    <div class="ipx-main-landing-categories-type-heading">Audio</div>
+                    <div class="ipx-main-landing-categories-type-sub-heading">Audio stories (Audible Suno, Pocket FM), Music
+                        projects/albums</div>
+                    <div class="ipx-main-landing-categories-type-action-wrapper cust-margin-cat">
+                        <div class="ipx-main-landing-categories-type-action-image"><img src="assets/images/cat-music.png" /></div>
+                        <div class="ipx-main-landing-categories-type-action-arrow"></div>
+                    </div>
+                    <div class="ipx-landing-custom-action">
+                        <div class="ipx-landing-cust-cat-circle">
+                            <img src="assets/images/cat-arrow.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ipx-main-landing-categories-type">
+                <div class="ipx-main-landing-categories-type-content">
+                    <div class="ipx-main-landing-categories-type-heading">Video</div>
+                    <div class="ipx-main-landing-categories-type-sub-heading cust-line-height">OTT films, web series...</div>
+                    <div class="ipx-main-landing-categories-type-action-wrapper">
+                        <div class="ipx-main-landing-categories-type-action-image"><img src="assets/images/cat-camera.png" /></div>
+                        <div class="ipx-main-landing-categories-type-action-arrow"><img src="assets/images/cat-arrow.png" /></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Category Section End-->
+
+    <!--How it works section Start-->
+    <div class="ipx-main-landing-how-it-works" id="howItWorks">
+        <div class="ipx-main-landing-how-it-heading">How it works</div>
+        <div class="ipx-main-landing-how-it-sub-heading">Here’s how you can turn entertainment into your new personal
+            asset[c]:</div>
+        <div class="ipx-main-landing-how-it-works-timeline">
+            <div class="ipx-main-landing-how-it-works-timeline-bar"><img src="assets/images/how-it-works-line.png" /></div>
+            <div class="ipx-main-landing-how-it-works-steps">
+                <div class="ipx-main-landing-how-it-works-step first-step">
+                    <div class="ipx-main-landing-how-it-works-step-text">Find</div>
+                    <div class="ipx-main-landing-how-it-works-step-dot"><img src="assets/images/Ellipse-big.png" /></div>
+                    <div class="ipx-main-landing-how-it-works-step-bubble text-left">
+                        <div class="ipx-main-bubble-arrow"><img src="assets/images/bubble-arrow-left.png" /></div>
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Metus ligula suspendisse dictum sed turpis
+              ante tortor egestas arcu.</span>
+                    </div>
+                </div>
+                <div class="ipx-main-landing-how-it-works-step second-step">
+                    <div class="ipx-main-landing-how-it-works-step-bubble text-right">
+                        <div class="ipx-main-bubble-arrow"><img src="assets/images/bubble-arrow-right.png" /></div>
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Metus ligula suspendisse dictum sed turpis
+              ante tortor egestas arcu.</span>
+                    </div>
+                    <div class="ipx-main-landing-how-it-works-step-dot-small"><img src="assets/images/Ellipse-small.png" /></div>
+                    <div class="ipx-main-landing-how-it-works-step-text">Invest</div>
+                </div>
+                <div class="ipx-main-landing-how-it-works-step third-step">
+                    <div class="ipx-main-landing-how-it-works-step-text">Share</div>
+                    <div class="ipx-main-landing-how-it-works-step-dot-small"><img src="assets/images/Ellipse-small.png" /></div>
+                    <div class="ipx-main-landing-how-it-works-step-bubble text-left">
+                        <div class="ipx-main-bubble-arrow"><img src="assets/images/bubble-arrow-left.png" /></div>
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Metus ligula suspendisse dictum sed turpis
+              ante tortor egestas arcu.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ipx-main-landing-how-it-sub-heading">By empowering audiences to become stakeholders in the art they
+            believe in, IPX offers freedom for both the artist and the consumer.
+        </div>
+    </div>
+    <!--How it works section End-->
+
+    <!--Landing info section gallery Start-->
+    <div class="ipx-main-landing-info-gallery">
+        <div class="ipx-main-landing-info-gallery-heading">You could be part of India’s next blockbuster.</div>
+        <div class="ipx-main-landing-info-gallery-sub-heading">To ensure IPX grows organically into a deeply invested and
+            enthusiastic community, we’re currently invitation-only.</div>
+        <div class="ipx-main-landing-info-gallery-images-wrapper">
+            <div class="ipx-main-landing-info-gallery-images gallery-first"><img
+                    src="assets/images/unsplash_BQTHOGNHo08.png" /></div>
+            <div class="ipx-main-landing-info-gallery-images gallery-second"><img
+                    src="assets/images/unsplash_JlvCPXJRQAk.png" /></div>
+            <div class="ipx-main-landing-info-gallery-images gallery-third"><img
+                    src="assets/images/unsplash_nuaC8zcUvng.png" /></div>
+            <div class="ipx-main-landing-info-gallery-images gallery-fourth"><img
+                    src="assets/images/unsplash_ftMUkTF2nB0.png" /></div>
+        </div>
+    </div>
+    <!--Landing info section gallery End-->
+
+    <!--Footer Section Start-->
+    <div class="ipx-main-footer" id="getEarlyAccess">
+        <div class="ipx-main-footer-container">
+            <div class="ipx-footer-head">
+                <div class="ipx-footer-head-title">Get Notified</div>
+                <div class="ipx-footer-head-sub">IPX will be available to select few investors in a few weeks. If you would like
+                    to be a part of the IPX investor community, drop your details in the form below and we will notify you when we
+                    are ready to on-board you.</div>
+            </div>
+            <div class="ipx-footer-subscribe">
+                <div class="ipx-subscribe-input">
+                    <input placeholder="Please enter your email" type="email" name="email" [(ngModel)]="email" />
+                </div>
+                <div class="ipx-subscribe-action">
+                    <div class="ipx-subscribe-action-btn" (click)="submitEmail()">
+                        Subscribe
+                    </div>
+                </div>
+            </div>
+            <div class="input-error-check">
+                {{emailError}}
+            </div>
+            <!-- <div class="ipx-footer-info">
+              <div class="ipx-footer-info-item">About</div>
+              <div class="ipx-footer-info-item">Terms of Use</div>
+              <div class="ipx-footer-info-item">Privacy Policy</div>
+              <div class="ipx-footer-info-item">Knowledge Base</div>
+              <div class="ipx-footer-info-item">Customer Support</div>
+            </div> -->
+            <div class="ipx-social-info">
+                <div class="ipx-social-info-item">
+                    <a href="https://facebook.com/ipxclub" target="_blank"><img src="assets/images/facebook.png" /></a>
+                </div>
+                <div class="ipx-social-info-item">
+                    <a href="https://instagram.com/ipxclub" target="_blank"><img src="assets/images/intsa.png" /></a>
+                </div>
+                <div class="ipx-social-info-item">
+                    <a href="https://twitter.com/ipxclub" target="_blank"><img src="assets/images/twitter.png" /></a>
+                </div>
+            </div>
+        </div>
+        <div class="ipx-x-footer">
+            <img src="assets/images/x-footer.png" />
+        </div>
+    </div>
+    <!--Footer Section End-->
+</div>
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
