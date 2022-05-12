@@ -1,8 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {LoginGuardService} from "./modules/login/guards/login-guard.service";
 import {LandingPageComponent} from "./core/components/landing-page/landing-page.component";
-import {ChangePasswordGuard} from "./modules/change-password/guard/change-password.guard";
+import {AuthGuard} from "./modules/change-password/guard/auth-guard.service";
 
 const routes: Routes = [
   {
@@ -15,7 +14,7 @@ const routes: Routes = [
   {
     path: "",
     loadChildren: () => import("./modules/login/login.module").then(m => m.LoginModule),
-    canActivate: [LoginGuardService]
+    canActivate: [AuthGuard]
   },
   {
     path: "",
@@ -24,7 +23,7 @@ const routes: Routes = [
   {
     path: "",
     loadChildren: () => import("./modules/change-password/change-password.module").then(m => m.ChangePasswordModule),
-    canActivate: [ChangePasswordGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: "",
