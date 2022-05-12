@@ -1,0 +1,53 @@
+name: Lighthouse Check
+on: [ pull_request ]
+
+jobs:
+  lighthouse-check:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@master
+      - run: mkdir /tmp/artifacts
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Install dependencies
+        run: yarn
+      - name: Run Lighthouse Mobile device
+        run: yarn lhci:mobile
+        env:
+          accessToken: ${{ secrets.LIGHTHOUSE_CHECK_GITHUB_ACCESS_TOKEN }}
+          outputDirectory: /tmp/artifacts
+          urls: 'https://stage.ipx.club'
+      - name: Run Lighthouse Desktop device
+        run: yarn lhci:desktop
+        env:
+          accessToken: ${{ secrets.LIGHTHOUSE_CHECK_GITHUB_ACCESS_TOKEN }}
+          outputDirectory: /tmp/artifacts
+          urls: 'https://stage.ipx.club'
+      - name: Upload artifacts
+        uses: actions/upload-artifact@master
+        with:
+          name: Lighthouse reports
+          path: /tmp/artifacts
+
+#name: Lighthouse Check
+#on: [pull_request]
+#
+#jobs:
+#  lighthouse-check:
+#    runs-on: ubuntu-18.04
+#    steps:
+#      - uses: actions/checkout@master
+#      - run: mkdir /tmp/artifacts
+#      - name: Run Lighthouse
+#        uses: foo-software/lighthouse-check-action@master
+#        with:
+#          accessToken: ${{ secrets.LIGHTHOUSE_CHECK_GITHUB_ACCESS_TOKEN }}
+#          outputDirectory: /tmp/artifacts
+#          urls: 'https://stage.ipx.club'
+#      - name: Upload artifacts
+#        uses: actions/upload-artifact@master
+#        with:
+#          name: Lighthouse reports
+#          path: /tmp/artifacts
