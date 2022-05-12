@@ -41,7 +41,9 @@ export abstract class AbstractAuthentication extends CacheService implements IAu
         }), tap((status) => this.authStatus$.next(status)),
         this.getAndUpdateUserIfAuthenticated,
         tap(() => loginApiResponse$.next(response))
-      ).subscribe();
+      ).subscribe((r) => {
+      console.log(r)},
+      (e) => {loginApiResponse$.error(e)});
     return loginApiResponse$
   }
 

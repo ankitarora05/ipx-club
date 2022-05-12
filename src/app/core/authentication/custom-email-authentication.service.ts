@@ -5,21 +5,7 @@ import {defaultAuthStatus, IAuthStatus, ICredentials, IServerAuthResponse} from 
 import {User} from "../../shared/models/user";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
-
-export interface IJwtToken {
-  "userObj": {
-    "_id": string,
-    "firstName": string,
-    "lastName": string,
-    "email": string,
-    "phone": string,
-    "emailVerified": boolean,
-    "phoneVerified": boolean,
-    "userType": string
-  },
-  "iat": number,
-  "exp": number
-}
+import {IJwtToken} from "./models/jwtToken";
 
 @Injectable({
   providedIn: "root"
@@ -32,7 +18,7 @@ export class CustomEmailAuthenticationService extends AbstractAuthentication {
   }
 
   protected authProvider(credentials: ICredentials): Observable<IServerAuthResponse> {
-    return this.httpClient.post<any>(` ${environment.stageUrl}/accounts/api/login`, credentials);
+    return this.httpClient.post<any>(` ${environment.baseUrl}/accounts/api/login`, credentials);
   }
 
   protected getCurrentUser(): Observable<User> {

@@ -3,14 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {IUser} from "../../../shared/models/abstract-user";
 import {Observable} from "rxjs";
 import {environment} from "../../../../environments/environment";
-
-export interface IUserPayload {
-    firstName: string
-    lastName: string
-    email: string
-    password: string
-    phone: string
-}
+import {IUserPayload} from "../../../shared/models/user-payload";
 
 @Injectable()
 export class SignupService {
@@ -19,6 +12,6 @@ export class SignupService {
     }
 
     signup(userPayload: IUserPayload): Observable<IUser> {
-        return this.httpClient.post<IUser>(`${environment.stageUrl}/accounts/api/user`, userPayload);
+        return this.httpClient.post<IUser>(`${environment.baseUrl}/accounts/api/user`, userPayload);
     }
 }

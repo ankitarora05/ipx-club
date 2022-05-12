@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LoginGuardService} from "./modules/login/guards/login-guard.service";
 import {LandingPageComponent} from "./core/components/landing-page/landing-page.component";
-import {ChangePasswordGuardService} from "./modules/change-password/guards/change-password-guard.service";
+import {ChangePasswordGuard} from "./modules/change-password/guard/change-password.guard";
 
 const routes: Routes = [
   {
@@ -15,7 +15,7 @@ const routes: Routes = [
   {
     path: "",
     loadChildren: () => import("./modules/login/login.module").then(m => m.LoginModule),
-    canLoad: [LoginGuardService]
+    canActivate: [LoginGuardService]
   },
   {
     path: "",
@@ -23,7 +23,8 @@ const routes: Routes = [
   },
   {
     path: "",
-    loadChildren: () => import("./modules/change-password/change-password.module").then(m => m.ChangePasswordModule)
+    loadChildren: () => import("./modules/change-password/change-password.module").then(m => m.ChangePasswordModule),
+    canActivate: [ChangePasswordGuard]
   },
   {
     path: "",

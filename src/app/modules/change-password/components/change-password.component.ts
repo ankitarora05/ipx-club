@@ -4,61 +4,57 @@ import {ChangePasswordService} from "../services/change-password.service";
 import {UserInputValidator} from "../../../shared/validators/user-input-validator";
 import {UserService} from "../../../shared/services/user.service";
 import {Router} from "@angular/router";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
-    selector: 'app-change-password',
-    templateUrl: './change-password.component.html'
+  selector: 'app-change-password',
+  templateUrl: './change-password.component.html'
 })
 export class ChangePasswordComponent implements OnInit {
-    changePasswordForm!: FormGroup;
-    hasRequestError: boolean = false
-    httpErrorMessage: boolean = false
-    formSubmitted: boolean = false
+  changePasswordForm!: FormGroup
+  hasRequestError: boolean = false
+  httpErrorMessage!: string
+  formSubmitted: boolean = false
 
-    constructor(private fb: FormBuilder,
-                private router: Router,
-                private changePasswordService: ChangePasswordService,
-                private userService: UserService) {
-    }
+  constructor(private fb: FormBuilder,
+              private router: Router,
+              private changePasswordService: ChangePasswordService,
+              private userService: UserService) {
+  }
 
-    get password() {
-        return this.changePasswordForm.get("password");
-    }
+  ngOnInit(): void {
+    this.changePasswordForm = this.buildResetPasswordForm();
+  }
 
-    get confirmPassword() {
-        return this.changePasswordForm.get("confirmPassword")
-    }
+  reset(resetForm: FormGroup): void {
+    this.formSubmitted = true;
+    const {_id} = this.userService.currentUser
+    const updatedPasswordPayload = {...resetForm.value, _id}
+    this.changePasswordForm.valid && this.changePasswordService.changePassword(updatedPasswordPayload)
+      .subscribe(this.handleChangePasswordSuccess(), this.handleChangePasswordFailure())
+  }
 
-    ngOnInit(): void {
-        this.changePasswordForm = this.buildResetPasswordForm();
-    }
+  private handleChangePasswordSuccess() {
+    return () => {
+      this.changePasswordForm.reset();
+      this.router.navigateByUrl("/dashboard")
+    };
+  }
 
-    reset(resetForm: FormGroup): void {
-        this.formSubmitted = true;
-        const {_id} = this.userService.currentUser
-        const updatedPasswordPayload = {...resetForm.value , _id}
-        this.changePasswordForm.valid && this.changePasswordService.changePassword(updatedPasswordPayload)
-          .subscribe((response) => {
-              this.changePasswordForm.reset();
-              this.router.navigateByUrl("/dashboard")
-          }, (error)=> {
-              this.handleChangePasswordHttpError(error)
-          })
-    }
+  private handleChangePasswordFailure() {
+    return (error: HttpErrorResponse) => {
+      this.hasRequestError = true;
+      this.httpErrorMessage = error.statusText;
+    };
+  }
 
-    private buildResetPasswordForm(): FormGroup {
-        return this.fb.group({
-            password: [null, [UserInputValidator.passwordValidator, Validators.required]],
-            confirmPassword: [null, Validators.required],
+  private buildResetPasswordForm(): FormGroup {
+    return this.fb.group({
+      password: [null, [UserInputValidator.passwordValidator, Validators.required]],
+      confirmPassword: [null, Validators.required],
 
-        }, {
-            validator: UserInputValidator.passwordMatchValidator
-        });
-    }
-
-    private handleChangePasswordHttpError(error: any) {
-        const [message] = error.message;
-        this.hasRequestError = true;
-        this.httpErrorMessage = message;
-    }
+    }, {
+      validator: UserInputValidator.passwordMatchValidator
+    });
+  }
 }

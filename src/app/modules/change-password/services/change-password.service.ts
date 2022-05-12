@@ -1,14 +1,9 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {IResponse} from "../../../shared/models/http/Response";
 import {environment} from "../../../../environments/environment";
-
-export interface IChangePassword {
-  userId: string
-  oldPassword: string
-  newPassword: string
-}
+import {IChangePassword} from '../model/change-password';
 
 @Injectable()
 export class ChangePasswordService {
@@ -16,6 +11,6 @@ export class ChangePasswordService {
   constructor(private httpClient: HttpClient) { }
 
   changePassword(passwordPayload: IChangePassword): Observable<IResponse> {
-    return this.httpClient.post<IResponse>(`${environment.stageUrl}/accounts/api/change-password`, passwordPayload)
+    return this.httpClient.post<IResponse>(`${environment.baseUrl}/accounts/api/change-password`, passwordPayload)
   }
 }

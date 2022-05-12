@@ -1,28 +1,37 @@
 import {Injectable} from '@angular/core';
-import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
+import {
+  HttpErrorResponse,
+  HttpEvent,
+  HttpHandler,
+  HttpInterceptor,
+  HttpRequest,
+  HttpResponse
+} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {tap} from "rxjs/operators";
+import {filter, map} from "rxjs/operators";
 
 @Injectable()
 export class AppHttpInterceptor implements HttpInterceptor {
 
-    intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-        return next.handle(request).pipe(
-            this.validateApiStatusCode()
-        );
-    }
+  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    return next.handle(request).pipe(
+      filter(event => event instanceof HttpResponse),
+      map((event: any) => this.validateResponseCode(event))
+    );
+  }
 
-    /*
-    * By default every API response will be 200 (success).
-    * `statusCode` from API will be validated and observables will be rejected for easy consumption at the services.
-    * */
-    private validateApiStatusCode() {
-        return tap((event: any) => {
-            if (event && event instanceof HttpResponse) {
-                if (event?.body?.statusCode >= 400) {
-                    throw event.body;
-                }
-            }
-        });
+  /*
+  * By default every API response will be 200 (success).
+  * `statusCode` from API will be validated and observables will be rejected for easy consumption at the services.
+  * */
+  private validateResponseCode(event: HttpResponse<any>) {
+    if (event?.body?.statusCode >= 400) {
+      throw new HttpErrorResponse({
+        error: event.body,
+        status: event.body.statusCode,
+        statusText: event.body.message
+      })
     }
+    return event;
+  }
 }

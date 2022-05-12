@@ -6,13 +6,16 @@ import {UserService} from "../../../shared/services/user.service";
 @Injectable({
   providedIn: 'root'
 })
-export class LoginGuardService implements CanActivate {
+export class ChangePasswordGuard implements CanActivate {
 
   constructor(private userService: UserService, private router: Router) {
   }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (!this.userService.isAuthenticated) return true
-    return this.router.navigate(["/dashboard"])
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    if (this.userService.isAuthenticated) return true
+    return this.router.navigate(["/"])
   }
+
 }

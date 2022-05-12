@@ -5,57 +5,60 @@ import {CustomEmailAuthenticationService} from "../../../core/authentication/cus
 import {IServerAuthResponse} from "../../../core/authentication/models/auth";
 import {LoginRouter} from "../router/login-router";
 import {Router} from "@angular/router";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html'
+  selector: 'app-login',
+  templateUrl: './login.component.html'
 })
 export class LoginComponent extends LoginRouter implements OnInit {
-    loginForm!: FormGroup;
-    hasRequestError: boolean = false;
-    formSubmitted: boolean = false;
-    httpErrorMessage!: string;
+  loginForm!: FormGroup;
+  hasRequestError: boolean = false;
+  formSubmitted: boolean = false;
+  httpErrorMessage!: string;
+  awaitedForApiResponse: boolean = false;
 
-    constructor(private fb: FormBuilder,
-                private loginService: CustomEmailAuthenticationService,
-                router: Router) {
-        super(router);
-    }
+  constructor(private fb: FormBuilder,
+              private loginService: CustomEmailAuthenticationService,
+              router: Router) {
+    super(router);
+  }
 
-    get email() {
-        return this.loginForm.get("email");
-    }
+  ngOnInit(): void {
+    this.loginForm = this.buildLoginForm();
+  }
 
-    get password() {
-        return this.loginForm.get("password");
-    }
+  buildLoginForm(): FormGroup {
+    return this.fb.group({
+      email: [null, [UserInputValidator.emailValidator, Validators.required]],
+      password: [null, [Validators.required]]
+    })
+  }
 
-    ngOnInit(): void {
-        this.loginForm = this.buildLoginForm();
+  login(submittedForm: FormGroup): void {
+    this.formSubmitted = true;
+    if (this.loginForm.valid) {
+      this.awaitedForApiResponse = true;
+      this.loginService.login(submittedForm.value)
+        .subscribe(this.handleLoginSuccess(), this.handleLoginFailure());
     }
+  }
 
-    buildLoginForm(): FormGroup {
-        return this.fb.group({
-            email: [null, [UserInputValidator.emailValidator, Validators.required]],
-            password: [null, [UserInputValidator.passwordValidator, Validators.required]]
-        })
-    }
+  private handleLoginSuccess() {
+    return (res: IServerAuthResponse) => {
+      this.awaitedForApiResponse = false;
+      this.loginForm.reset();
+      this.handleSuccessLoginRouteChange(res);
+    };
+  }
 
-    login(submittedForm: FormGroup): void {
-        this.formSubmitted = true;
-        this.loginForm.valid && this.loginService.login(submittedForm.value).subscribe((res: IServerAuthResponse) => {
-            this.loginForm.reset();
-            this.handleSuccessLoginRouteChange(res);
-        }, (error) => {
-            this.handleLoginHttpError(error);
-        });
-    }
-
-    private handleLoginHttpError(error: any) {
-        const [message] = error.message;
-        this.hasRequestError = true;
-        this.httpErrorMessage = message;
-    }
+  private handleLoginFailure() {
+    return (error: HttpErrorResponse) => {
+      this.awaitedForApiResponse = false;
+      this.hasRequestError = true;
+      this.httpErrorMessage = error.statusText;
+    };
+  }
 }
 
 
