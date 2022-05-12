@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('/assets/fonts/Roboto-Medium.ttf');
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #000000;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.auth-gradient {
+    background: radial-gradient(86.07% 145.35% at 28.05% 86.07%, #3E67FF 0%, #E47298 100%);
+}
